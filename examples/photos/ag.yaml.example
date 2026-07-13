@@ -1,0 +1,16 @@
+model: anthropic/claude-sonnet-4-5
+auth_token:          # or set ANTHROPIC_AUTH_TOKEN in environment
+base_url:            # optional: litellm or custom proxy
+tools:
+  - name: photos
+    bin: /path/to/examples/photos/photos
+    hint: a tool to access MacOS Photos app
+  - name: magick
+    bin: /opt/homebrew/bin/magick
+    hint: ImageMagick tool to process and edit images
+  - name: bash
+    bin: /bin/bash
+    prefix_args:
+      - -c
+    hint: run arbitrary shell commands
+skills: []

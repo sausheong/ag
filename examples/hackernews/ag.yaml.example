@@ -1,0 +1,10 @@
+model: anthropic/claude-sonnet-4-5
+auth_token:          # or set ANTHROPIC_AUTH_TOKEN in environment
+base_url:            # optional: litellm or custom proxy
+tools:
+  - name: hackernews
+    url: https://news.ycombinator.com
+    hint: read top stories, search posts, browse comments
+    headless: false
+    profile: hackernews
+skills: []

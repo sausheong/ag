@@ -1,0 +1,17 @@
+ag
+*.tmp
+/tmp/
+.DS_Store
+docs/
+.superpowers/
+examples/mmkr/.venv/
+examples/mmkr/output/
+examples/mmkr/__pycache__/
+examples/mmkr/*.egg-info/
+examples/photos/photos
+examples/mmkr/mmkr/__pycache__/
+ag.yaml
+examples/*/ag.yaml
+examples/photos/ag.glm.yaml
+examples/photos/ag.deepseek.yaml
+.playwright-mcp/

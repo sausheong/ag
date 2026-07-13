@@ -1,0 +1,46 @@
+- generic [ref=f2e2]:
+  - generic [ref=f2e3]:
+    - generic [ref=f2e4]: ag
+    - generic [ref=f2e5]: v0.1.0
+  - generic [ref=f2e6]:
+    - text: Make an agent out of anything. Wrap your CLIs and apps into a conversational interface,
+    - text: then let
+    - emphasis [ref=f2e7]: ag
+    - text: learn and evolve — rewriting its own skills after every use.
+  - generic [ref=f2e8]:
+    - generic [ref=f2e13]: ag — interactive REPL
+    - generic [ref=f2e14]:
+      - generic [ref=f2e15]:
+        - generic [ref=f2e16]: $
+        - generic [ref=f2e17]: "ag bootstrap # generate full specs from --help output"
+      - generic [ref=f2e19]: photos... ok magick... ok bash... ok
+      - generic [ref=f2e20]:
+        - generic [ref=f2e21]: $
+        - generic [ref=f2e22]: ag
+      - generic [ref=f2e23]:
+        - generic [ref=f2e24]: ">"
+        - generic [ref=f2e25]: show me beach photos from July 2024, export them, and resize to 1600px
+      - generic [ref=f2e26]:
+        - generic [ref=f2e27]: ◆ cli_run_photos
+        - generic [ref=f2e28]: ✓
+      - generic [ref=f2e29]: Found 12 assets matching "beach 2024-07"
+      - generic [ref=f2e30]:
+        - generic [ref=f2e31]: ◆ cli_run_photos
+        - generic [ref=f2e32]: ✓
+      - generic [ref=f2e33]: Exported 12 files → ~/Desktop/beach/
+      - generic [ref=f2e34]:
+        - generic [ref=f2e35]: ◆ cli_run_magick
+        - generic [ref=f2e36]: ✓
+      - generic [ref=f2e37]: Resized 12 JPEGs to 1600px wide
+      - generic [ref=f2e38]:
+        - generic [ref=f2e39]: "Saved skill:"
+        - generic [ref=f2e40]: beach-export-resize (context)
+  - generic [ref=f2e41]:
+    - generic [ref=f2e42]: self-learning
+    - generic [ref=f2e43]: ag.yaml config
+    - generic [ref=f2e44]: MCP support
+    - generic [ref=f2e45]: bootstrap from --help
+    - generic [ref=f2e46]: lipgloss UI
+    - generic [ref=f2e47]: thinking mode
+    - generic [ref=f2e48]: prefix_args
+    - generic [ref=f2e49]: github.com/sausheong/ag
