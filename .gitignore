@@ -15,3 +15,4 @@ examples/*/ag.yaml
 examples/photos/ag.glm.yaml
 examples/photos/ag.deepseek.yaml
 .playwright-mcp/
+.playwright-mcp/
