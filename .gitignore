@@ -4,6 +4,7 @@ ag
 .DS_Store
 docs/
 .superpowers/
+examples/mmkr/
 examples/mmkr/.venv/
 examples/mmkr/output/
 examples/mmkr/__pycache__/
@@ -16,3 +17,4 @@ examples/photos/ag.glm.yaml
 examples/photos/ag.deepseek.yaml
 .playwright-mcp/
 .playwright-mcp/
+
