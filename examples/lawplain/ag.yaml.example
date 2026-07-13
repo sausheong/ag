@@ -1,0 +1,31 @@
+model: claude-sonnet-4-6
+auth_token: <your token>
+base_url: <your base url, optional>
+tools:
+    - name: lawplain
+      bin: curl
+      hint: Search Singapore legal corpus — judgments, statutes, Hansard, bills, subsidiary legislation, practice directions
+      prefix_args:
+        - -s
+        - -H
+        - "Authorization: Bearer YOUR_LAWPLAIN_API_KEY"
+      parameters:
+        type: object
+        properties:
+          url:
+            type: string
+            description: >-
+              Full Lawplain API URL, e.g.
+              https://lawplain.com/api/v1/judgments/search?q=negligence&limit=5
+              or https://lawplain.com/api/v1/statutes/search?q=contract&limit=5
+              or https://lawplain.com/api/v1/judgments/{citation}
+        required:
+          - url
+      positional:
+        - url
+      examples:
+        - Search judgments about negligence
+        - Find statutes related to employment
+        - Look up the judgment for [2026] SGHCR 24
+        - Search Hansard for debates on housing
+skills: []

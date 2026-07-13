@@ -1,6 +1,6 @@
-model: anthropic/claude-sonnet-4-5
-auth_token:          # or set ANTHROPIC_AUTH_TOKEN in environment
-base_url:            # optional: litellm or custom proxy
+model: claude-sonnet-4-6
+auth_token: <your token>
+base_url: <your base url, optional>
 tools:
   - name: hackernews
     url: https://news.ycombinator.com
