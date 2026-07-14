@@ -14,6 +14,7 @@ import (
 	"github.com/sausheong/ag/ui"
 	"github.com/sausheong/harness/llm"
 	"github.com/sausheong/harness/providers/anthropic"
+	"github.com/sausheong/harness/providers/openai"
 	"github.com/sausheong/harness/runtime"
 	"github.com/sausheong/harness/session"
 	harnesstool "github.com/sausheong/harness/tool"
@@ -57,20 +58,34 @@ func Build(cfg *config.Config, configPath string) (*runtime.Runtime, *agtool.JSO
 		model = os.Getenv("ANTHROPIC_MODEL")
 	}
 
+	// Determine provider from model prefix (e.g. "openai/gpt-4o" → openai).
+	isOpenAI := strings.HasPrefix(model, "openai/")
+
 	apiKey := cfg.AuthToken
 	if apiKey == "" {
-		apiKey = os.Getenv("ANTHROPIC_AUTH_TOKEN")
+		if isOpenAI {
+			apiKey = os.Getenv("OPENAI_API_KEY")
+		} else {
+			apiKey = os.Getenv("ANTHROPIC_AUTH_TOKEN")
+			if apiKey == "" {
+				apiKey = os.Getenv("ANTHROPIC_API_KEY")
+			}
+		}
 	}
 	if apiKey == "" {
-		apiKey = os.Getenv("ANTHROPIC_API_KEY")
-	}
-	if apiKey == "" {
+		if isOpenAI {
+			return nil, nil, fmt.Errorf("auth_token not set in ag.yaml and OPENAI_API_KEY not set in environment")
+		}
 		return nil, nil, fmt.Errorf("auth_token not set in ag.yaml and ANTHROPIC_AUTH_TOKEN/ANTHROPIC_API_KEY not set in environment")
 	}
 
 	baseURL := cfg.BaseURL
 	if baseURL == "" {
-		baseURL = os.Getenv("ANTHROPIC_BASE_URL")
+		if isOpenAI {
+			baseURL = os.Getenv("OPENAI_BASE_URL")
+		} else {
+			baseURL = os.Getenv("ANTHROPIC_BASE_URL")
+		}
 	}
 
 	reg := harnesstool.NewRegistry()
@@ -113,7 +128,12 @@ func Build(cfg *config.Config, configPath string) (*runtime.Runtime, *agtool.JSO
 		})
 	}
 
-	prov := anthropic.NewAnthropicProvider(apiKey, baseURL)
+	var prov llm.LLMProvider
+	if isOpenAI {
+		prov = openai.NewOpenAIProviderWithKind(apiKey, baseURL, "openai-compatible")
+	} else {
+		prov = anthropic.NewAnthropicProvider(apiKey, baseURL)
+	}
 	sess := session.NewSession("ag", "main")
 
 	// selfLearner tracks which CLI tools were called since the last user message
